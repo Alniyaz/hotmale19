@@ -479,4 +479,14 @@ body.is-leaving .page-transition { transform: translateY(0); }
 @media (max-width: 939px) {
   .site-header .menu-button { display: grid !important; flex: 0 0 46px; }
   .site-header .desktop-nav { display: none !important; }
+  .hero h1 > span:not(.hero-number) {
+    position: relative;
+    z-index: 3;
+    text-shadow:
+      -2px -2px 0 rgba(3, 3, 3, .98),
+       2px -2px 0 rgba(3, 3, 3, .98),
+      -2px  2px 0 rgba(3, 3, 3, .98),
+       2px  2px 0 rgba(3, 3, 3, .98),
+       0 7px 18px rgba(0, 0, 0, .95);
+  }
 }
