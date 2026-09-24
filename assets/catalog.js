@@ -20,8 +20,8 @@
     The Call button stays disabled while a phone number is empty.
   */
   window.HOTMALE_STORE_CONTACTS = [
-    { name: 'Narayanan', role: 'Wanarpet', phone: '+91 99406 29831' },
-    { name: 'Jaya Prakesh', role: 'Store Enquiry', phone: '+91 99406 29832' }
+    { name: 'Narayanan', role: 'For Wanarpet Store', phone: '+91 99406 29831' },
+    { name: 'Jaya Prakesh', role: 'For Anna Nagar Store', phone: '+91 99406 29832' }
   ];
 
   window.HOTMALE_CATALOG = {
