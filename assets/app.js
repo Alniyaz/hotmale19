@@ -30,6 +30,19 @@
   });
   mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
+  const resetNavigationState = () => {
+    body.classList.remove('is-leaving');
+    closeMenu();
+  };
+
+  // Mobile browsers often restore pages from the back-forward cache with their
+  // previous DOM classes intact. Always clear the full-screen transition when
+  // the page becomes active again so the logo frame cannot remain over the UI.
+  addEventListener('pageshow', resetNavigationState);
+  doc.addEventListener('visibilitychange', () => {
+    if (doc.visibilityState === 'visible') resetNavigationState();
+  });
+
   const header = doc.querySelector('[data-header]');
   addEventListener('scroll', () => header?.classList.toggle('is-compact', scrollY > 30), { passive: true });
 
