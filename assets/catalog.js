@@ -95,7 +95,7 @@
       cardCta: 'Shop the complete look',
       type: 'combo',
       products: [
-        { id: 'co-01', name: 'Essential Tee Combo', price: 599, dealQty: 2, dealPrice: 599, sizes: ['M','L','XL','XXL'], image: local('combo-collections','co-01.jpg'), fallbackImage: demo('photo-1523381210434-271e8be1f52b'), fresh: true },
+        { id: 'co-01', name: 'T Shirt', price: 590, dealQty: 3, dealPrice: 590, sizes: ['M','L','XL','XXL'], image: local('combo-collections','assets/products/combo-collections/t shirt.png'), fallbackImage: demo('photo-1523381210434-271e8be1f52b'), fresh: true },
         { id: 'co-02', name: 'Weekend Shirt Combo', price: 599, dealQty: 2, dealPrice: 599, sizes: ['S','M','L','XL'], image: local('combo-collections','co-02.jpg'), fallbackImage: demo('photo-1551488831-00ddcb6c6bd3'), fresh: true },
         { id: 'co-03', name: 'Streetwear Mix Combo', price: 799, dealQty: 3, dealPrice: 799, sizes: ['M','L','XL'], image: local('combo-collections','co-03.jpg'), fallbackImage: demo('photo-1610189012906-4c0aa9b9781e'), fresh: false },
         { id: 'co-04', name: 'Smart-Casual Mix Combo', price: 799, dealQty: 3, dealPrice: 799, sizes: ['S','M','L','XL','XXL'], image: local('combo-collections','co-04.jpg'), fallbackImage: demo('photo-1445205170230-053b83016050'), fresh: false },
