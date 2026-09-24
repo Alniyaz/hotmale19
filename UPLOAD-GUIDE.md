@@ -69,3 +69,16 @@ dealPrice: 990
 ```
 
 This displays **BUY 4 @ ₹990** on the product.
+
+## Store enquiry contacts
+
+Open `assets/catalog.js` and edit the `HOTMALE_STORE_CONTACTS` block near the top:
+
+```js
+window.HOTMALE_STORE_CONTACTS = [
+  { name: 'Person One', role: 'Wanapret Store', phone: '+91 98765 43210' },
+  { name: 'Person Two', role: 'Anna Nagar Store', phone: '+91 98765 43211' }
+];
+```
+
+Clicking **Enquire in store** opens a popup with both contacts. The call button is automatically enabled when a valid phone number is added.

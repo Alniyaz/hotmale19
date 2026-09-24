@@ -142,6 +142,30 @@
     const sort = doc.querySelector('[data-sort]');
     const modal = doc.querySelector('[data-quick-view]');
     const modalContent = doc.querySelector('[data-modal-content]');
+    const storeContacts = window.HOTMALE_STORE_CONTACTS || [];
+    const contactDialog = doc.createElement('dialog');
+    contactDialog.className = 'contact-popup';
+    contactDialog.setAttribute('aria-labelledby', 'contact-popup-title');
+    contactDialog.innerHTML = `
+      <button class="modal-close" type="button" aria-label="Close contact list" data-contact-close>×</button>
+      <div class="contact-popup-body">
+        <p class="eyebrow"><span></span> Store enquiry</p>
+        <h2 id="contact-popup-title">Call our store team</h2>
+        <p class="contact-product" data-contact-product>Choose a person to call.</p>
+        <div class="contact-list">
+          ${storeContacts.map((contact, index) => {
+            const phone = String(contact.phone || '').trim();
+            const dialNumber = phone.replace(/[^+\d]/g, '');
+            const canCall = dialNumber.replace(/\D/g, '').length >= 8;
+            const phoneLabel = canCall ? phone : 'Add phone number in catalog.js';
+            const callControl = canCall
+              ? `<a class="call-contact-button ripple" href="tel:${dialNumber}" aria-label="Call ${contact.name}">Call now <span>☎</span></a>`
+              : '<span class="call-contact-button is-disabled" aria-disabled="true">Call unavailable</span>';
+            return `<article class="contact-card"><span class="contact-number">0${index + 1}</span><p class="contact-role">${contact.role || 'Store Enquiry'}</p><h3>${contact.name}</h3><p class="contact-phone">${phoneLabel}</p>${callControl}</article>`;
+          }).join('')}
+        </div>
+      </div>`;
+    doc.body.append(contactDialog);
     const isCombo = collection.type === 'combo' || slug === 'combo-collections';
     let selectedSize = 'ALL';
     let sortMode = 'featured';
@@ -239,6 +263,7 @@
       if (!view) return;
       const product = collection.products.find((item) => item.id === view.dataset.view);
       const modalPrice = isCombo && product.dealQty ? `BUY ${product.dealQty} @ ${formatPrice(product.dealPrice)}` : formatPrice(product.price);
+      modal.dataset.productId = product.id;
       modalContent.innerHTML = `<article class="modal-product"><img src="${product.image}" data-fallback="${product.fallbackImage || ''}" alt="${product.name}"><div class="modal-copy"><p class="eyebrow"><span></span>${collection.title}</p><h2>${product.name}</h2><p class="modal-price ${isCombo ? 'modal-deal' : ''}">${modalPrice}</p><p>Available in ${product.sizes.join(', ')}. Visit the anniversary celebration to explore the fit in person.</p><button class="button button-primary ripple" type="button" data-enquire>${isCombo ? 'Choose this offer' : 'Enquire in store'} <span>→</span></button></div></article>`;
       const modalImage = modalContent.querySelector('img[data-fallback]');
       modalImage?.addEventListener('error', () => {
@@ -253,9 +278,16 @@
     modal.addEventListener('click', (event) => {
       if (event.target === modal) modal.close();
       if (event.target.closest('[data-enquire]')) {
+        const selectedProduct = collection.products.find((item) => item.id === modal.dataset.productId);
+        contactDialog.querySelector('[data-contact-product]').textContent = selectedProduct
+          ? `Enquiring about ${selectedProduct.name}`
+          : 'Choose a person to call.';
         modal.close();
-        showToast('Added to your store enquiry list');
+        requestAnimationFrame(() => contactDialog.showModal());
       }
+    });
+    contactDialog.addEventListener('click', (event) => {
+      if (event.target === contactDialog || event.target.closest('[data-contact-close]')) contactDialog.close();
     });
     doc.querySelector('[data-modal-close]').addEventListener('click', () => modal.close());
     renderProducts();

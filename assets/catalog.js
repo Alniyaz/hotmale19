@@ -13,6 +13,17 @@
   const local = (category, filename) => `/assets/products/${category}/${filename}`;
   const demo = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1000&q=86`;
 
+  /*
+    STORE ENQUIRY CONTACTS
+    Replace the two names and phone numbers below with the real details.
+    Keep the country code in each phone number, for example: +91 98765 43210.
+    The Call button stays disabled while a phone number is empty.
+  */
+  window.HOTMALE_STORE_CONTACTS = [
+    { name: 'Contact Person 1', role: 'Store Enquiry', phone: '' },
+    { name: 'Contact Person 2', role: 'Store Enquiry', phone: '' }
+  ];
+
   window.HOTMALE_CATALOG = {
     'new-arrivals': {
       title: 'New Arrivals',

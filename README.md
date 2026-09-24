@@ -23,3 +23,5 @@ python -m http.server 4173
 Then open `http://127.0.0.1:4173/`.
 
 Collection and product content is managed in one file: `assets/catalog.js`. New collections automatically appear on the home page and open in the reusable collection layout. Upload product photos into matching folders under `assets/products`. See `UPLOAD-GUIDE.md` and `assets/ADD-COLLECTION-TEMPLATE.js`.
+
+The two store enquiry contacts are also configured near the top of `assets/catalog.js`. Product enquiry buttons open a responsive contact popup with direct call buttons.
