@@ -2,16 +2,16 @@
 
 All collection and product content is managed from one file:
 
-`dist/assets/catalog.js`
+`assets/catalog.js`
 
 You do not need to edit the home page or create another collection page. New collections automatically appear on the home page and open in the reusable collection layout.
 
 ## Add a new collection
 
-1. Open `dist/assets/ADD-COLLECTION-TEMPLATE.js`.
-2. Copy the example collection entry into `window.HOTMALE_CATALOG` inside `dist/assets/catalog.js`.
+1. Open `assets/ADD-COLLECTION-TEMPLATE.js`.
+2. Copy the example collection entry into `window.HOTMALE_CATALOG` inside `assets/catalog.js`.
 3. Change the slug, title, description, products and prices.
-4. Create a matching image folder, for example `dist/assets/products/formal-wear`.
+4. Create a matching image folder, for example `assets/products/formal-wear`.
 5. Add `cover.jpg` and the product images to that folder.
 
 The slug must be lowercase and use hyphens, for example `formal-wear`. The product image folder must use exactly the same slug.

@@ -14,12 +14,12 @@ A responsive, multi-page anniversary invitation and collection website built wit
 
 ## Run locally
 
-Serve the `dist` folder with any static web server. For example:
+Serve the repository folder with any static web server. For example:
 
 ```powershell
-python -m http.server 4173 --directory dist
+python -m http.server 4173
 ```
 
 Then open `http://127.0.0.1:4173/`.
 
-Collection and product content is managed in one file: `dist/assets/catalog.js`. New collections automatically appear on the home page and open in the reusable collection layout. Upload product photos into matching folders under `dist/assets/products`. See `UPLOAD-GUIDE.md` and `dist/assets/ADD-COLLECTION-TEMPLATE.js`.
+Collection and product content is managed in one file: `assets/catalog.js`. New collections automatically appear on the home page and open in the reusable collection layout. Upload product photos into matching folders under `assets/products`. See `UPLOAD-GUIDE.md` and `assets/ADD-COLLECTION-TEMPLATE.js`.
