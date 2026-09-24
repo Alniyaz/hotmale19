@@ -1,10 +1,11 @@
-UPLOAD PRODUCT IMAGES HERE
+UPLOAD COLLECTION AND PRODUCT IMAGES HERE
 
-Use these folders and filenames:
-new-arrivals/na-01.jpg to na-06.jpg
-gen-z-fits/gz-01.jpg to gz-06.jpg
-ethnic-wear/et-01.jpg to et-06.jpg
-plus-size-wear/ps-01.jpg to ps-06.jpg
-combo-collections/co-01.jpg to co-06.jpg
+Create one folder for each collection. The folder name must match the
+collection slug in ../catalog.js, for example:
 
-For more products or different filenames, edit ../catalog.js.
+formal-wear/cover.jpg
+formal-wear/fw-01.jpg
+formal-wear/fw-02.jpg
+
+Edit all collections and products in ../catalog.js.
+See ../../../UPLOAD-GUIDE.md for the full instructions.

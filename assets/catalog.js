@@ -1,9 +1,13 @@
 /*
   HOTMALE CATALOG
   ----------------
-  1. Upload product photos into /assets/products/<category>/ using the filenames below.
-  2. Edit product names, prices, sizes and offer details in this file.
-  3. If a local photo is missing, the demo fallback image is shown automatically.
+  THIS IS THE ONLY FILE YOU NEED TO EDIT FOR COLLECTIONS AND PRODUCTS.
+
+  1. Copy one complete collection block to add a collection.
+  2. Give it a unique lowercase slug, for example: 'formal-wear'.
+  3. Upload its photos into /assets/products/<slug>/.
+  4. New collections automatically appear on the home page and use the reusable collection page.
+  5. If a product photo is missing, its demo fallback image is shown automatically.
 */
 (() => {
   const local = (category, filename) => `/assets/products/${category}/${filename}`;
@@ -14,6 +18,8 @@
       title: 'New Arrivals',
       description: 'Fresh silhouettes, sharper layers and the newest HOTMALE drops.',
       watermark: 'NEW',
+      href: '/collections/new-arrivals/',
+      coverImage: demo('photo-1617137968427-85924c800a22'),
       products: [
         { id: 'na-01', name: 'Premium Noir Overshirt', price: 1499, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','na-01.jpg'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
         { id: 'na-02', name: 'Urban Sand Jacket', price: 2299, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-02.jpg'), fallbackImage: demo('photo-1516257984-b1b4d707412e'), fresh: true },
@@ -27,6 +33,8 @@
       title: 'Gen Z Fits',
       description: 'Oversized energy, street-led layers and relaxed fits built for now.',
       watermark: 'Z',
+      href: '/collections/gen-z-fits/',
+      coverImage: demo('photo-1523398002811-999ca8dec234'),
       products: [
         { id: 'gz-01', name: 'Oversized Graphic Hoodie', price: 1899, sizes: ['S','M','L','XL'], image: local('gen-z-fits','gz-01.jpg'), fallbackImage: demo('photo-1556821840-3a63f95609a7'), fresh: true },
         { id: 'gz-02', name: 'Good Vibes Boxy Tee', price: 1299, sizes: ['S','M','L','XL','XXL'], image: local('gen-z-fits','gz-02.jpg'), fallbackImage: demo('photo-1523398002811-999ca8dec234'), fresh: true },
@@ -40,6 +48,8 @@
       title: 'Ethnic Wear',
       description: 'Contemporary ceremony pieces with traditional texture and a modern edge.',
       watermark: 'E',
+      href: '/collections/ethnic-wear/',
+      coverImage: demo('photo-1610189012906-4c0aa9b9781e'),
       products: [
         { id: 'et-01', name: 'Ivory Embroidered Kurta', price: 2499, sizes: ['S','M','L','XL'], image: local('ethnic-wear','et-01.jpg'), fallbackImage: demo('photo-1610189012906-4c0aa9b9781e'), fresh: true },
         { id: 'et-02', name: 'Black Gold Celebration Shirt', price: 1999, sizes: ['M','L','XL','XXL'], image: local('ethnic-wear','et-02.jpg'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
@@ -53,6 +63,8 @@
       title: 'Plus-Size Wear',
       description: 'Confident cuts, considered comfort and style without compromise.',
       watermark: '+',
+      href: '/collections/plus-size-wear/',
+      coverImage: demo('photo-1622286342621-4bd786c2447c'),
       products: [
         { id: 'ps-01', name: 'Plus-Size Essential Polo', price: 1199, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-01.jpg'), fallbackImage: demo('photo-1622286342621-4bd786c2447c'), fresh: true },
         { id: 'ps-02', name: 'Plus-Size Utility Shirt', price: 1599, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-02.jpg'), fallbackImage: demo('photo-1560250097-0b93528c311a'), fresh: false },
@@ -66,6 +78,11 @@
       title: 'Combo Collections',
       description: 'Choose your quantity, mix your favourites and unlock the combo price.',
       watermark: '4X',
+      href: '/collections/combo-collections/',
+      coverImage: demo('photo-1523381210434-271e8be1f52b'),
+      cardWide: true,
+      cardCta: 'Shop the complete look',
+      type: 'combo',
       products: [
         { id: 'co-01', name: 'Essential Tee Combo', price: 599, dealQty: 2, dealPrice: 599, sizes: ['M','L','XL','XXL'], image: local('combo-collections','co-01.jpg'), fallbackImage: demo('photo-1523381210434-271e8be1f52b'), fresh: true },
         { id: 'co-02', name: 'Weekend Shirt Combo', price: 599, dealQty: 2, dealPrice: 599, sizes: ['S','M','L','XL'], image: local('combo-collections','co-02.jpg'), fallbackImage: demo('photo-1551488831-00ddcb6c6bd3'), fresh: true },
