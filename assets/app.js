@@ -88,13 +88,19 @@
       const endDate = new Date(Date.parse(start.replace(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z/, '$1-$2-$3T$4:$5:$6Z')) + 2 * 60 * 60 * 1000);
       const pad = (value) => String(value).padStart(2, '0');
       const end = `${endDate.getUTCFullYear()}${pad(endDate.getUTCMonth() + 1)}${pad(endDate.getUTCDate())}T${pad(endDate.getUTCHours())}${pad(endDate.getUTCMinutes())}${pad(endDate.getUTCSeconds())}Z`;
-      const content = ['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',`DTSTART:${start}`,`DTEND:${end}`,'SUMMARY:HOTMALE 19th Anniversary Celebration',`LOCATION:${locationName}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
-      const anchor = doc.createElement('a');
-      anchor.href = URL.createObjectURL(new Blob([content], { type: 'text/calendar' }));
-      anchor.download = `hotmale-${locationName.toLowerCase().replace(/\s+/g, '-')}.ics`;
-      anchor.click();
-      URL.revokeObjectURL(anchor.href);
-      showToast(`Date saved for ${locationName}`);
+      const calendarUrl = new URL('https://calendar.google.com/calendar/render');
+      calendarUrl.searchParams.set('action', 'TEMPLATE');
+      calendarUrl.searchParams.set('text', 'HOTMALE 19th Anniversary Celebration');
+      calendarUrl.searchParams.set('dates', `${start}/${end}`);
+      calendarUrl.searchParams.set('details', 'Celebrate 19 years of priceless style with HOTMALE.');
+      calendarUrl.searchParams.set('location', locationName);
+      calendarUrl.searchParams.set('ctz', 'Asia/Kolkata');
+      const calendarLink = doc.createElement('a');
+      calendarLink.href = calendarUrl.toString();
+      calendarLink.target = '_blank';
+      calendarLink.rel = 'noopener noreferrer';
+      calendarLink.click();
+      showToast(`Opening calendar for ${locationName}`);
     });
   });
 
