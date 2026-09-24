@@ -12,7 +12,6 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
   };
-
   const menuButton = doc.querySelector('[data-menu-button]');
   const mobileMenu = doc.querySelector('[data-mobile-menu]');
   const closeMenu = () => {
@@ -169,7 +168,7 @@
       <button class="modal-close" type="button" aria-label="Close contact list" data-contact-close>×</button>
       <div class="contact-popup-body">
         <p class="eyebrow"><span></span> Store enquiry</p>
-        <h2 id="contact-popup-title">Call our store team</h2>
+        <h2 id="contact-popup-title">Call our Store Manager</h2>
         <p class="contact-product" data-contact-product>Choose a person to call.</p>
         <div class="contact-list">
           ${storeContacts.map((contact, index) => {
