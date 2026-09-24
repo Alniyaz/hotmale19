@@ -25,7 +25,7 @@
         { id: 'na-02', name: 'Urban Sand Jacket', price: 2299, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-02.jpg'), fallbackImage: demo('photo-1516257984-b1b4d707412e'), fresh: true },
         { id: 'na-03', name: 'Classic Black Polo', price: 999, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','na-03.jpg'), fallbackImage: demo('photo-1500648767791-00dcc994a43e'), fresh: false },
         { id: 'na-04', name: 'Linen Occasion Shirt', price: 1399, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-04.jpg'), fallbackImage: demo('photo-1519085360753-af0119f7cbe7'), fresh: true },
-        { id: 'na-05', name: 'Midnight Textured Shirt', price: 1599, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','na-05.jpg'), fallbackImage: demo('photo-1562157873-818bc0726f68'), fresh: true },
+ 
         { id: 'na-06', name: 'Tapered City Trouser', price: 1799, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-06.jpg'), fallbackImage: demo('photo-1473966968600-fa801b869a1a'), fresh: false }
       ]
     },
