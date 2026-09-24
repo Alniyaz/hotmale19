@@ -20,8 +20,8 @@
     The Call button stays disabled while a phone number is empty.
   */
   window.HOTMALE_STORE_CONTACTS = [
-    { name: 'Contact Person 1', role: 'Store Enquiry', phone: '' },
-    { name: 'Contact Person 2', role: 'Store Enquiry', phone: '' }
+    { name: 'Narayanan', role: 'Store Enquiry', phone: '9940629831' },
+    { name: 'Jaya Prakesh', role: 'Store Enquiry', phone: '9940629832' }
   ];
 
   window.HOTMALE_CATALOG = {
