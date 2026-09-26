@@ -60,7 +60,7 @@
       description: 'Contemporary ceremony pieces with traditional texture and a modern edge.',
       watermark: 'E',
       href: '/collections/ethnic-wear/',
-      coverImage: demo('photo-1610189012906-4c0aa9b9781e'),
+      coverImage: local('ethnic-wear','jodhpuri.png'),
       products: [
         { id: 'et-01', name: 'BLAZER', price: 1599, sizes: ['S','M','L','XL','XXL'], image: local('ethnic-wear','blazzer.png'), fallbackImage: demo('photo-1610189012906-4c0aa9b9781e'), fresh: true },
         { id: 'et-02', name: 'COAT SUIT', price: 3799, sizes: ['S','M','L','XL','XXL'], image: local('ethnic-wear','coat suit.png'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
