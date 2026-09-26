@@ -45,9 +45,9 @@
       description: 'Oversized energy, street-led layers and relaxed fits built for now.',
       watermark: 'Z',
       href: '/collections/gen-z-fits/',
-      coverImage: demo('photo-1523398002811-999ca8dec234'),
+      coverImage: local('gen-z-fits','t-shirt.jpg'),
       products: [
-        { id: 'gz-01', name: 'Oversized Graphic Hoodie', price: 1899, sizes: ['S','M','L','XL'], image: local('gen-z-fits','gz-01.jpg'), fallbackImage: demo('photo-1556821840-3a63f95609a7'), fresh: true },
+        { id: 'gz-01', name: 'Down Shoulder T Shirt', price: 1899, sizes: ['S','M','L','XL'], image: local('gen-z-fits','t-shirt.jpg'), fallbackImage: demo('photo-1556821840-3a63f95609a7'), fresh: true },
         { id: 'gz-02', name: 'Good Vibes Boxy Tee', price: 1299, sizes: ['S','M','L','XL','XXL'], image: local('gen-z-fits','gz-02.jpg'), fallbackImage: demo('photo-1523398002811-999ca8dec234'), fresh: true },
         { id: 'gz-03', name: 'Relaxed Cargo Trouser', price: 1599, sizes: ['S','M','L','XL'], image: local('gen-z-fits','gz-03.jpg'), fallbackImage: demo('photo-1473966968600-fa801b869a1a'), fresh: false },
         { id: 'gz-04', name: 'Varsity Night Jacket', price: 2499, sizes: ['M','L','XL'], image: local('gen-z-fits','gz-04.jpg'), fallbackImage: demo('photo-1551488831-00ddcb6c6bd3'), fresh: true },
