@@ -133,7 +133,7 @@
       const wideClass = collection.cardWide ? ' collection-card-wide' : '';
       const cardNumber = String(index + 1).padStart(2, '0');
       const cardCta = collection.cardCta || 'Explore';
-      return `<a class="collection-card${wideClass} reveal is-visible transition-link" href="${href}" style="--card-image:url('${safeCover}')"><span class="collection-index">${cardNumber}</span><span class="collection-name">${collection.title}</span><span class="collection-cta">${cardCta} <i>→</i></span></a>`;
+      return `<a class="collection-card${wideClass} reveal is-visible transition-link" href="${href}" style="--card-image:url('${safeCover}')"><span class="collection-name">${collection.title}</span><span class="collection-cta">${cardCta} <i>→</i></span></a>`;
     }).join('');
 
     grid.querySelectorAll('a.transition-link').forEach(attachPageTransition);
