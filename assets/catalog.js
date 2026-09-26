@@ -30,11 +30,11 @@
       description: 'Fresh silhouettes, sharper layers and the newest HOTMALE drops.',
       watermark: 'NEW',
       href: '/collections/new-arrivals/',
-      coverImage: demo('photo-1617137968427-85924c800a22'),
+      coverImage: local('new-arrivals','denim t-shirt.png'),
       products: [
         { id: 'na-01', name: 'Premium Noir Overshirt', price: 1499, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','na-01.jpg'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
         { id: 'na-02', name: 'Urban Sand Jacket', price: 2299, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-02.jpg'), fallbackImage: demo('photo-1516257984-b1b4d707412e'), fresh: true },
-        { id: 'na-03', name: 'Classic Black Polo', price: 999, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','na-03.jpg'), fallbackImage: demo('photo-1500648767791-00dcc994a43e'), fresh: false },
+        { id: 'na-03', name: 'Denim T Shirt', price: 999, sizes: ['M','L','XL','XXL'], image: local('new-arrivals','denim t-shirt.png'), fallbackImage: demo('photo-1500648767791-00dcc994a43e'), fresh: false },
        
  
         { id: 'na-06', name: 'Tapered City Trouser', price: 1799, sizes: ['S','M','L','XL'], image: local('new-arrivals','na-06.jpg'), fallbackImage: demo('photo-1473966968600-fa801b869a1a'), fresh: false }
