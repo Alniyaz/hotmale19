@@ -62,12 +62,11 @@
       href: '/collections/ethnic-wear/',
       coverImage: demo('photo-1610189012906-4c0aa9b9781e'),
       products: [
-        { id: 'et-01', name: 'Ivory Embroidered Kurta', price: 2499, sizes: ['S','M','L','XL'], image: local('ethnic-wear','et-01.jpg'), fallbackImage: demo('photo-1610189012906-4c0aa9b9781e'), fresh: true },
-        { id: 'et-02', name: 'Black Gold Celebration Shirt', price: 1999, sizes: ['M','L','XL','XXL'], image: local('ethnic-wear','et-02.jpg'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
-        { id: 'et-03', name: 'Sandstone Waistcoat Set', price: 2299, sizes: ['S','M','L','XL'], image: local('ethnic-wear','et-03.jpg'), fallbackImage: demo('photo-1506629082955-511b1aa562c8'), fresh: false },
-        { id: 'et-04', name: 'Festive Noir Kurta', price: 2199, sizes: ['M','L','XL','XXL'], image: local('ethnic-wear','et-04.jpg'), fallbackImage: demo('photo-1519085360753-af0119f7cbe7'), fresh: false },
-        { id: 'et-05', name: 'Heritage Jacquard Jacket', price: 2999, sizes: ['M','L','XL'], image: local('ethnic-wear','et-05.jpg'), fallbackImage: demo('photo-1560250097-0b93528c311a'), fresh: true },
-        { id: 'et-06', name: 'Classic Ceremony Set', price: 3499, sizes: ['S','M','L','XL'], image: local('ethnic-wear','et-06.jpg'), fallbackImage: demo('photo-1598808503746-f34c53b9323e'), fresh: false }
+        { id: 'et-01', name: 'BLAZER', price: 1599, sizes: ['S','M','L','XL','XXL'], image: local('ethnic-wear','blazzer.png'), fallbackImage: demo('photo-1610189012906-4c0aa9b9781e'), fresh: true },
+        { id: 'et-02', name: 'COAT SUIT', price: 3799, sizes: ['S','M','L','XL','XXL'], image: local('ethnic-wear','coat suit.png'), fallbackImage: demo('photo-1617137968427-85924c800a22'), fresh: true },
+        { id: 'et-03', name: 'KURTHA', price: 999, sizes: ['S','M','L','XL','XXL'], image: local('ethnic-wear','kurtha set.png'), fallbackImage: demo('photo-1506629082955-511b1aa562c8'), fresh: false },
+        { id: 'et-04', name: 'JODHPURI', price: 1799, sizes: ['M','L','XL','XXL'], image: local('ethnic-wear','jodhpuri.png'), fallbackImage: demo('photo-1519085360753-af0119f7cbe7'), fresh: true },
+        { id: 'et-05', name: 'STONE WORK SHIRT', price: 1799, sizes: ['M','L','XL','XXL'], image: local('ethnic-wear','party wear shirt.png'), fallbackImage: demo('photo-1519085360753-af0119f7cbe7'), fresh: false }
       ]
     },
     'plus-size-wear': {
