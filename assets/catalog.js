@@ -74,9 +74,9 @@
       description: 'Confident cuts, considered comfort and style without compromise.',
       watermark: '+',
       href: '/collections/plus-size-wear/',
-      coverImage: demo('photo-1622286342621-4bd786c2447c'),
+      coverImage: local('plus-size-wear','casual shrt.png'),
       products: [
-        { id: 'ps-01', name: 'Plus-Size Essential Polo', price: 1199, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-01.jpg'), fallbackImage: demo('photo-1622286342621-4bd786c2447c'), fresh: true },
+        { id: 'ps-01', name: 'Casual Shirt', price: 1199, sizes: ['3XL','4XL','5XL'], image: local('plus-size-wear','casual shrt.png'), fallbackImage: demo('photo-1622286342621-4bd786c2447c'), fresh: true },
         { id: 'ps-02', name: 'Plus-Size Utility Shirt', price: 1599, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-02.jpg'), fallbackImage: demo('photo-1560250097-0b93528c311a'), fresh: false },
         { id: 'ps-03', name: 'Plus-Size City Hoodie', price: 1899, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-03.jpg'), fallbackImage: demo('photo-1556821840-3a63f95609a7'), fresh: true },
         { id: 'ps-04', name: 'Plus-Size Formal Shirt', price: 1499, sizes: ['XL','XXL','3XL','4XL'], image: local('plus-size-wear','ps-04.jpg'), fallbackImage: demo('photo-1562157873-818bc0726f68'), fresh: false },
