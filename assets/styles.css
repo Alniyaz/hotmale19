@@ -286,6 +286,9 @@ body.is-leaving .page-transition { transform: translateY(0); }
 .collection-card:hover, .collection-card:focus-visible { transform: translateY(-7px); border-color: var(--gold); box-shadow: 0 24px 50px rgba(0, 0, 0, .48); }
 .collection-card:hover::before, .collection-card:focus-visible::before { transform: scale(1.055); filter: saturate(1.12); }
 .collection-index { position: absolute; left: 1.2rem; top: 1rem; color: var(--gold-light); font-family: Georgia, serif; font-size: 1.4rem; }
+.collection-index {
+  display: none;
+}
 .collection-name { max-width: 85%; font-family: Georgia, serif; font-size: clamp(2rem, 6vw, 3.3rem); font-weight: 700; line-height: .95; text-transform: uppercase; text-shadow: 0 4px 18px #000; }
 .collection-cta { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; color: var(--gold-light); font-size: .8rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
 .collection-cta i { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; font-style: normal; transition: color .25s ease, background .25s ease, transform .25s ease; }
