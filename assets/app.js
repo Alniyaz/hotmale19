@@ -199,8 +199,11 @@
 
     const getVisibleProducts = () => {
       let visible = collection.products.filter((product) => {
-        const sizeMatch = selectedSize === 'ALL' || product.sizes.includes(selectedSize);
-        return sizeMatch;
+        const filterMatch =
+  selectedSize === 'ALL' ||
+  (selectedSize === 'NEW' && product.fresh === true);
+
+return filterMatch;
       });
       const effectivePrice = (product) => product.dealPrice ?? product.price;
       if (sortMode === 'low') visible = [...visible].sort((a, b) => effectivePrice(a) - effectivePrice(b));
@@ -256,7 +259,10 @@
       selectedSize = button.dataset.size;
       doc.querySelectorAll('[data-size]').forEach((item) => item.classList.toggle('is-active', item === button));
       renderProducts();
-      showToast(selectedSize === 'ALL' ? 'Showing every available size' : `Showing size ${selectedSize}`);
+      showToast(
+  selectedSize === 'ALL'
+    ? 'Showing all products'
+    : 'Showing new arrivals');
     });
 
     sort.addEventListener('change', () => {

@@ -36,10 +36,19 @@
         <button class="filter-button ripple" type="button" data-filter-button aria-expanded="false">Filter <span>＋</span></button>
         <label class="sort-label">Sort <select data-sort><option value="featured">Featured</option><option value="newest">Newest</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label>
       </div>
-      <div class="filter-panel" data-filter-panel>
-        <p>Available size</p>
-        <div class="size-filters" data-size-filters><button type="button" data-size="ALL" class="is-active">All</button><button type="button" data-size="S">S</button><button type="button" data-size="M">M</button><button type="button" data-size="L">L</button><button type="button" data-size="XL">XL</button><button type="button" data-size="XXL">XXL</button><button type="button" data-size="3XL">3XL</button><button type="button" data-size="4XL">4XL</button></div>
-      </div>
+     <div class="filter-panel" data-filter-panel>
+  <p>Filter products</p>
+
+  <div class="size-filters" data-size-filters>
+    <button type="button" data-size="ALL" class="is-active">
+      All
+    </button>
+
+    <button type="button" data-size="NEW">
+      New Arrivals
+    </button>
+  </div>
+</div>
       <div class="product-grid" data-product-grid></div>
       <p class="empty-state" data-empty-state hidden>No styles match this size yet. Try another filter.</p>
     </section>
