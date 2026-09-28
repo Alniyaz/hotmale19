@@ -208,7 +208,7 @@
 
           { id: 'gz-06',
           name: 'Bootcut Pant', 
-          price: 1899, sizes: ['30 - 36'], 
+          price: 649, sizes: ['30 - 36'], 
           image: local('gen-z-fits','BOOT PANT.jpg'),
           fresh: true },
 
