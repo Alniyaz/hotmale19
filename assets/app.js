@@ -1,9 +1,28 @@
 (() => {
   const doc = document;
   const body = doc.body;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const toast = doc.querySelector('[data-toast]');
   let toastTimer;
+
+  if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+
+  if (window.Element && !Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  }
+
+  if (window.Element && !Element.prototype.closest) {
+    Element.prototype.closest = function (selector) {
+      let element = this;
+      while (element && element.nodeType === 1) {
+        if (element.matches(selector)) return element;
+        element = element.parentElement;
+      }
+      return null;
+    };
+  }
 
   const showToast = (message) => {
     if (!toast) return;
@@ -21,13 +40,15 @@
     mobileMenu.classList.remove('is-open');
   };
 
-  menuButton?.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!open));
-    menuButton.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
-    mobileMenu.classList.toggle('is-open', !open);
-  });
-  mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!open));
+      menuButton.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      mobileMenu.classList.toggle('is-open', !open);
+    });
+    mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  }
 
   const resetNavigationState = () => {
     body.classList.remove('is-leaving');
@@ -43,7 +64,9 @@
   });
 
   const header = doc.querySelector('[data-header]');
-  addEventListener('scroll', () => header?.classList.toggle('is-compact', scrollY > 30), { passive: true });
+  addEventListener('scroll', () => {
+    if (header) header.classList.toggle('is-compact', scrollY > 30);
+  }, { passive: true });
 
   doc.addEventListener('pointerdown', (event) => {
     const target = event.target.closest('.ripple');
@@ -60,7 +83,7 @@
     ink.addEventListener('animationend', () => ink.remove(), { once: true });
   });
 
-  const reveals = [...doc.querySelectorAll('.reveal')];
+  const reveals = Array.prototype.slice.call(doc.querySelectorAll('.reveal'));
   if (reducedMotion || !('IntersectionObserver' in window)) {
     reveals.forEach((el) => el.classList.add('is-visible'));
   } else {
@@ -87,11 +110,14 @@
 
   doc.querySelectorAll('a.transition-link').forEach(attachPageTransition);
 
-  doc.querySelector('[data-ticket]')?.addEventListener('click', (event) => {
-    const ticket = event.currentTarget;
-    const expanded = ticket.getAttribute('aria-expanded') === 'true';
-    ticket.setAttribute('aria-expanded', String(!expanded));
-  });
+  const ticketButton = doc.querySelector('[data-ticket]');
+  if (ticketButton) {
+    ticketButton.addEventListener('click', (event) => {
+      const ticket = event.currentTarget;
+      const expanded = ticket.getAttribute('aria-expanded') === 'true';
+      ticket.setAttribute('aria-expanded', String(!expanded));
+    });
+  }
 
   doc.querySelectorAll('[data-calendar]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -118,15 +144,28 @@
 
   const collections = window.HOTMALE_CATALOG || {};
 
-  const formatPrice = (value) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
+  const getQueryParameter = (name) => {
+    const match = location.search.match(new RegExp(`[?&]${name}=([^&]*)`));
+    return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
+  };
+
+  const formatPrice = (value) => {
+    if (window.Intl && typeof Intl.NumberFormat === 'function') {
+      return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
+    }
+    return `₹${Math.round(Number(value) || 0)}`;
+  };
 
   const initHomeCollections = () => {
     const grid = doc.querySelector('[data-collection-grid]');
     if (!grid) return;
 
-    const visibleCollections = Object.entries(collections).filter(([, collection]) => collection.hidden !== true);
+    const visibleCollections = Object.keys(collections)
+      .map((slug) => [slug, collections[slug]])
+      .filter(([, collection]) => collection.hidden !== true);
+    if (!visibleCollections.length) return;
     grid.innerHTML = visibleCollections.map(([slug, collection], index) => {
-      const product = collection.products?.[0] || {};
+      const product = collection.products && collection.products[0] ? collection.products[0] : {};
       const coverImage = collection.coverImage || product.fallbackImage || product.image || '';
       const safeCover = encodeURI(coverImage).replace(/'/g, '%27');
       const href = collection.href || `/collections/view/?collection=${encodeURIComponent(slug)}`;
@@ -141,7 +180,7 @@
 
   const initCollectionPage = () => {
     if (body.dataset.page !== 'collection') return;
-    const slug = body.dataset.collection || new URLSearchParams(location.search).get('collection');
+    const slug = body.dataset.collection || getQueryParameter('collection');
     const collection = collections[slug];
     if (!collection) {
       doc.querySelector('[data-collection-title]').textContent = 'Collection not found';
@@ -183,7 +222,7 @@
           }).join('')}
         </div>
       </div>`;
-    doc.body.append(contactDialog);
+    doc.body.appendChild(contactDialog);
     const isCombo = collection.type === 'combo' || slug === 'combo-collections';
     let selectedSize = 'ALL';
     let sortMode = 'featured';
@@ -194,21 +233,30 @@
     doc.title = `${collection.title} — HOTMALE`;
     doc.querySelectorAll(`a[href="../${slug}/"]`).forEach((link) => link.setAttribute('aria-current', 'page'));
 
-    const saved = new Set(JSON.parse(localStorage.getItem('hotmale-wishlist') || '[]'));
-    const saveWishlist = () => localStorage.setItem('hotmale-wishlist', JSON.stringify([...saved]));
+    let saved = new Set();
+    try {
+      const savedItems = JSON.parse(localStorage.getItem('hotmale-wishlist') || '[]');
+      if (Array.isArray(savedItems)) saved = new Set(savedItems);
+    } catch (error) {
+      try { localStorage.removeItem('hotmale-wishlist'); } catch (storageError) { /* Storage is unavailable. */ }
+    }
+    const saveWishlist = () => {
+      const savedItems = [];
+      saved.forEach((id) => savedItems.push(id));
+      try { localStorage.setItem('hotmale-wishlist', JSON.stringify(savedItems)); } catch (error) { /* Storage is unavailable. */ }
+    };
 
     const getVisibleProducts = () => {
       let visible = collection.products.filter((product) => {
         const filterMatch =
-  selectedSize === 'ALL' ||
-  (selectedSize === 'NEW' && product.fresh === true);
-
-return filterMatch;
+          selectedSize === 'ALL' ||
+          (selectedSize === 'NEW' && product.fresh === true);
+        return filterMatch;
       });
-      const effectivePrice = (product) => product.dealPrice ?? product.price;
-      if (sortMode === 'low') visible = [...visible].sort((a, b) => effectivePrice(a) - effectivePrice(b));
-      if (sortMode === 'high') visible = [...visible].sort((a, b) => effectivePrice(b) - effectivePrice(a));
-      if (sortMode === 'newest') visible = [...visible].sort((a, b) => Number(b.fresh) - Number(a.fresh));
+      const effectivePrice = (product) => product.dealPrice != null ? product.dealPrice : product.price;
+      if (sortMode === 'low') visible = visible.slice().sort((a, b) => effectivePrice(a) - effectivePrice(b));
+      if (sortMode === 'high') visible = visible.slice().sort((a, b) => effectivePrice(b) - effectivePrice(a));
+      if (sortMode === 'newest') visible = visible.slice().sort((a, b) => Number(b.fresh) - Number(a.fresh));
       return visible;
     };
 
@@ -260,9 +308,10 @@ return filterMatch;
       doc.querySelectorAll('[data-size]').forEach((item) => item.classList.toggle('is-active', item === button));
       renderProducts();
       showToast(
-  selectedSize === 'ALL'
-    ? 'Showing all products'
-    : 'Showing new arrivals');
+        selectedSize === 'ALL'
+          ? 'Showing all products'
+          : 'Showing new arrivals'
+      );
     });
 
     sort.addEventListener('change', () => {
@@ -290,12 +339,14 @@ return filterMatch;
       modal.dataset.productId = product.id;
       modalContent.innerHTML = `<article class="modal-product"><img src="${product.image}" data-fallback="${product.fallbackImage || ''}" alt="${product.name}"><div class="modal-copy"><p class="eyebrow"><span></span>${collection.title}</p><h2>${product.name}</h2><p class="modal-price ${isCombo ? 'modal-deal' : ''}">${modalPrice}</p><p>Available in ${product.sizes.join(', ')}. Visit the anniversary celebration to explore the fit in person.</p><button class="button button-primary ripple" type="button" data-enquire>${isCombo ? 'Choose this offer' : 'Enquire in store'} <span>→</span></button></div></article>`;
       const modalImage = modalContent.querySelector('img[data-fallback]');
-      modalImage?.addEventListener('error', () => {
-        if (modalImage.dataset.fallback) {
-          modalImage.src = modalImage.dataset.fallback;
-          modalImage.removeAttribute('data-fallback');
-        }
-      });
+      if (modalImage) {
+        modalImage.addEventListener('error', () => {
+          if (modalImage.dataset.fallback) {
+            modalImage.src = modalImage.dataset.fallback;
+            modalImage.removeAttribute('data-fallback');
+          }
+        });
+      }
       modal.showModal();
     });
 
