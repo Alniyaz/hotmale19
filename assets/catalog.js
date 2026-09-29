@@ -231,8 +231,8 @@
           fresh: 0 },
 
           { id: 'gz-10',
-          name: 'Bomber Jacket', 
-          price: 1649, sizes: ['M - 3XL'], 
+          name: 'Sports Jacket', 
+          price: 699, sizes: ['M - 3XL'], 
           image: local('gen-z-fits','bomber jacket.png'),
           fresh: 0 },
                    
